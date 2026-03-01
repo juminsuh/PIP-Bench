@@ -1,0 +1,402 @@
+[
+  {
+    "id": "001",
+    "level": "single",
+    "description": "a woman wearing a red hat",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories"],
+    "factor": ["wearing a red hat"]
+  },
+  {
+    "id": "002",
+    "level": "single",
+    "description": "a man in a chef outfit",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories"],
+    "factor": ["in a chef outfit"]
+  },
+  {
+    "id": "003",
+    "level": "single",
+    "description": "a man wearing a yellow shirts",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories"],
+    "factor": ["wearing a yellow shirts"]
+  },
+  {
+    "id": "004",
+    "level": "single",
+    "description": "a woman in a purple wizard outfit",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories"],
+    "factor": ["in a purple wizard outfit"]
+  },
+  {
+    "id": "005",
+    "level": "single",
+    "description": "a man wearing a rainbow scarf",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories"],
+    "factor": ["wearing a rainbow scarf"]
+  },
+  {
+    "id": "006",
+    "level": "single",
+    "description": "a man in the snow",
+    "class_word": "man",
+    "factor_type": ["background"],
+    "factor": ["in the snow"]
+  },
+  {
+    "id": "007",
+    "level": "single",
+    "description": "a woman with a blue house in the background",
+    "class_word": "woman",
+    "factor_type": ["background"],
+    "factor": ["with a blue house in the background"]
+  },
+  {
+    "id": "008",
+    "level": "single",
+    "description": "a woman with a mountain in the background",
+    "class_word": "woman",
+    "factor_type": ["background"],
+    "factor": ["with a mountain in the background"]
+  },
+  {
+    "id": "009",
+    "level": "single",
+    "description": "a man on the beach",
+    "class_word": "man",
+    "factor_type": ["background"],
+    "factor": ["on the beach"]
+  },
+  {
+    "id": "010",
+    "level": "single",
+    "description": "a man in the jungle",
+    "class_word": "man",
+    "factor_type": ["background"],
+    "factor": ["in the jungle"]
+  },
+  {
+    "id": "011",
+    "level": "single",
+    "description": "a man riding a horse",
+    "class_word": "man",
+    "factor_type": ["action"],
+    "factor": ["riding a horse"]
+  },
+  {
+    "id": "012",
+    "level": "single",
+    "description": "a man reading a book",
+    "class_word": "man",
+    "factor_type": ["action"],
+    "factor": ["reading a book"]
+  },
+  {
+    "id": "013",
+    "level": "single",
+    "description": "a man coding in front of a computer",
+    "class_word": "man",
+    "factor_type": ["action"],
+    "factor": ["coding in front of a computer"]
+  },
+  {
+    "id": "014",
+    "level": "single",
+    "description": "a man baking cookies",
+    "class_word": "man",
+    "factor_type": ["action"],
+    "factor": ["baking cookies"]
+  },
+  {
+    "id": "015",
+    "level": "single",
+    "description": "a man holding a glass of wine",
+    "class_word": "man",
+    "factor_type": ["action"],
+    "factor": ["holding a glass of wine"]
+  },
+  {
+    "id": "016",
+    "level": "single",
+    "description": "a painting of a woman in the style of Vincent Van Gogh",
+    "class_word": "woman",
+    "factor_type": ["style"],
+    "factor": ["in the style of Vincent Van Gogh"]
+  },
+  {
+    "id": "017",
+    "level": "single",
+    "description": "a Greek marble sculpture of a woman",
+    "class_word": "woman",
+    "factor_type": ["style"],
+    "factor": ["a Greek marble sculpture"]
+  },
+  {
+    "id": "018",
+    "level": "single",
+    "description": "a black and white photograph of a man",
+    "class_word": "man",
+    "factor_type": ["style"],
+    "factor": ["depicted in a black and white photograph"]
+  },
+  {
+    "id": "019",
+    "level": "single",
+    "description": "a watercolor painting of a woman",
+    "class_word": "woman",
+    "factor_type": ["style"],
+    "factor": ["depicted in a watercolor painting"]
+  },
+  {
+    "id": "020",
+    "level": "single",
+    "description": "an oil painting of a man",
+    "class_word": "man",
+    "factor_type": ["style"],
+    "factor": ["depicted in an oil painting"]
+  },
+  {
+    "id": "021",
+    "level": "double",
+    "description": "a woman wearing a red hat in the snow",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "background"],
+    "factor": ["wearing a red hat", "in the snow"]
+  },
+  {
+    "id": "022",
+    "level": "double",
+    "description": "a woman in a chef outfit in a kitchen",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "background"],
+    "factor": ["in a chef outfit", "in a kitchen"]
+  },
+  {
+    "id": "023",
+    "level": "double",
+    "description": "a woman wearing a yellow shirts at the beach",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "background"],
+    "factor": ["wearing a yellow shirts", "on the beach"]
+  },
+  {
+    "id": "024",
+    "level": "double",
+    "description": "a woman in a purple wizard outfit with a mountain in the background",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "background"],
+    "factor": ["in a purple wizard outfit", "with a mountain in the background"]
+  },
+  {
+    "id": "025",
+    "level": "double",
+    "description": "a woman wearing a rainbow scarf in the jungle",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "background"],
+    "factor": ["wearing a rainbow scarf", "in the jungle"]
+  },
+  {
+    "id": "026",
+    "level": "double",
+    "description": "a woman in a firefighter outfit in the jungle",
+    "class_word": "woman",
+    "factor_type": ["background", "clothing & accessories"],
+    "factor": ["in the jungle", "in a firefighter outfit"]
+  },
+  {
+    "id": "027",
+    "level": "double",
+    "description": "a man baking cookies in a chef outfit",
+    "class_word": "man",
+    "factor_type": ["action", "clothing & accessories"],
+    "factor": ["baking cookies", "in a chef outfit"]
+  },
+  {
+    "id": "028",
+    "level": "double",
+    "description": "a man holding a glass of wine in a purple wizard outfit",
+    "class_word": "man",
+    "factor_type": ["action", "clothing & accessories"],
+    "factor": ["holding a glass of wine", "in a purple wizard outfit"]
+  },
+  {
+    "id": "029",
+    "level": "double",
+    "description": "a man wearing a rainbow scarf and reading a book",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories", "action"],
+    "factor": ["wearing a rainbow scarf", "reading a book"]
+  },
+  {
+    "id": "030",
+    "level": "double",
+    "description": "a woman wearing a red hat holding a glass of wine",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "action"],
+    "factor": ["wearing a red hat", "holding a glass of wine"]
+  },
+  {
+    "id": "031",
+    "level": "double",
+    "description": "a painting of a woman wearing a red hat in the style of Vincent Van Gogh",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "style"],
+    "factor": ["wearing a red hat", "in the style of Vincent Van Gogh"]
+  },
+  {
+    "id": "032",
+    "level": "double",
+    "description": "a watercolor painting of a man wearing a yellow shirts",
+    "class_word": "man",
+    "factor_type": ["style", "clothing & accessories"],
+    "factor": ["depicted in a watercolor painting", "wearing a yellow shirts"]
+  },
+  {
+    "id": "033",
+    "level": "double",
+    "description": "a man riding a horse in the snow",
+    "class_word": "man",
+    "factor_type": ["action", "background"],
+    "factor": ["riding a horse", "in the snow"]
+  },
+  {
+    "id": "034",
+    "level": "double",
+    "description": "a woman reading a book with a blue house in the background",
+    "class_word": "woman",
+    "factor_type": ["action", "background"],
+    "factor": ["reading a book", "with a blue house in the background"]
+  },
+  {
+    "id": "035",
+    "level": "double",
+    "description": "a man coding in front of a computer with a mountain in the background",
+    "class_word": "man",
+    "factor_type": ["action", "background"],
+    "factor": ["coding in front of a computer", "with a mountain in the background"]
+  },
+  {
+    "id": "036",
+    "level": "double",
+    "description": "a black and white photograph of a woman in the jungle",
+    "class_word": "woman",
+    "factor_type": ["style", "background"],
+    "factor": ["depicted in a black and white photograph", "in the jungle"]
+  },
+  {
+    "id": "037",
+    "level": "double",
+    "description": "a watercolor painting of a woman on the beach",
+    "class_word": "woman",
+    "factor_type": ["style", "background"],
+    "factor": ["depicted in a watercolor painting", "on the beach"]
+  },
+  {
+    "id": "038",
+    "level": "double",
+    "description": "an oil painting of a woman in the snow",
+    "class_word": "woman",
+    "factor_type": ["style", "background"],
+    "factor": ["depicted in an oil painting", "in the snow"]
+  },
+  {
+    "id": "039",
+    "level": "double",
+    "description": "an oil painting of a man riding a horse",
+    "class_word": "man",
+    "factor_type": ["style", "action"],
+    "factor": ["depicted in an oil painting", "riding a horse"]
+  },
+  {
+    "id": "040",
+    "level": "double",
+    "description": "a painting of a man reading a book in the style of Vincent Van Gogh",
+    "class_word": "man",
+    "factor_type": ["action", "style"],
+    "factor": ["reading a book", "in the style of Vincent Van Gogh"]
+  },
+  {
+    "id": "041",
+    "level": "triple",
+    "description": "a man in a chef outfit baking cookies with a blue house in the background",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories", "action", "background"],
+    "factor": ["in a chef outfit", "baking cookies", "with a blue house in the background"]
+  },
+  {
+    "id": "042",
+    "level": "triple",
+    "description": "a man in a purple wizard outfit reading a book with a mountain in the background",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories", "action", "background"],
+    "factor": ["in a purple wizard outfit", "reading a book", "with a mountain in the background"]
+  },
+  {
+    "id": "043",
+    "level": "triple",
+    "description": "a man wearing a rainbow scarf coding in front of a computer in the snow",
+    "class_word": "man",
+    "factor_type": ["clothing & accessories", "action", "background"],
+    "factor": ["wearing a rainbow scarf", "coding in front of a computer", "in the snow"]
+  },
+  {
+    "id": "044",
+    "level": "triple",
+    "description": "a woman wearing a yellow shirts holding a glass of wine on the beach",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "action", "background"],
+    "factor": ["wearing a yellow shirts", "holding a glass of wine", "on the beach"]
+  },
+  {
+    "id": "045",
+    "level": "triple",
+    "description": "a woman in a firefighter outfit reading a book with a mountain in the background",
+    "class_word": "woman",
+    "factor_type": ["action", "background", "clothing & accessories"],
+    "factor": ["reading a book", "with a mountain in the background", "in a firefighter outfit"]
+  },
+  {
+    "id": "046",
+    "level": "triple",
+    "description": "a woman wearing a red hat riding a horse in the jungle",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "action", "background"],
+    "factor": ["wearing a red hat", "riding a horse", "in the jungle"]
+  },
+  {
+    "id": "047",
+    "level": "triple",
+    "description": "a painting of a woman wearing a red hat in the snow in the style of Vincent Van Gogh",
+    "class_word": "woman",
+    "factor_type": ["clothing & accessories", "background", "style"],
+    "factor": ["wearing a red hat", "in the snow", "in the style of Vincent Van Gogh"]
+  },
+  {
+    "id": "048",
+    "level": "triple",
+    "description": "a black and white photograph of a woman wearing a chef outfit at the beach",
+    "class_word": "woman",
+    "factor_type": ["style", "clothing & accessories", "background"],
+    "factor": ["depicted in a black and white photograph", "in a chef outfit", "on the beach"]
+  },
+  {
+    "id": "049",
+    "level": "triple",
+    "description": "a watercolor painting of a man in a purple wizard outfit reading a book",
+    "class_word": "man",
+    "factor_type": ["style", "clothing & accessories", "action"],
+    "factor": ["depicted in a watercolor painting", "in a purple wizard outfit", "reading a book"]
+  },
+  {
+    "id": "050",
+    "level": "triple",
+    "description": "an oil painting of a woman riding a horse in the jungle",
+    "class_word": "woman",
+    "factor_type": ["style", "action", "background"],
+    "factor": ["depicted in oil painting", "riding a horse", "in the jungle"]
+  }
+]
