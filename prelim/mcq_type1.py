@@ -71,9 +71,9 @@ def run_type1_mcq(img_path1, img_path2):
                 {
                     "role": "user",
                     "content": [
-                        {"type": "text", "text": USER_PROMPT},
-                        {"type": "image_url", "image_url": {"url": f"data:{mime_1};base64,{b64_1}"}},
-                        {"type": "image_url", "image_url": {"url": f"data:{mime_2};base64,{b64_2}"}},
+                        {"type": "input_text", "text": USER_PROMPT},
+                        {"type": "input_image", "image_url": f"data:{mime_1};base64,{b64_1}"},
+                        {"type": "input_image", "image_url": f"data:{mime_2};base64,{b64_2}"},
                     ]
                 },
             ],
@@ -106,14 +106,12 @@ def main():
     output_path = "/data1/joo/pai_bench/result/mcq/prelim_compare/mcq_type1_baseline.json"
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-    # 1. 기존 결과 로드 (Resume 기능)
     processed_pairs = set()
     results = []
     if os.path.exists(output_path):
         try:
             with open(output_path, "r") as f:
                 results = json.load(f)
-                # 이미 처리된 쌍을 (image0, image1) 튜플 세트로 저장
                 for r in results:
                     if r["mcq_type1_score"] != "ERROR":
                         processed_pairs.add((r["image0"], r["image1"]))
@@ -121,12 +119,10 @@ def main():
         except Exception as e:
             print(f"⚠️ Error loading existing file: {e}. Starting fresh.")
 
-    # 2. 작업 대상 생성
     valid_ext = [".jpg", ".jpeg", ".png"]
     img_files = sorted([f for f in os.listdir(orig_folder) if os.path.splitext(f)[1].lower() in valid_ext])
     all_possible_pairs = list(combinations(img_files, 2))
     
-    # 처리되지 않은 태스크만 필터링
     tasks = [p for p in all_possible_pairs if (p[0], p[1]) not in processed_pairs]
     print(f"Total pairs: {len(all_possible_pairs)} | Remaining tasks: {len(tasks)}")
 
@@ -134,8 +130,7 @@ def main():
         print("✅ All pairs are already processed.")
         return
 
-    # 3. Multithreading 처리 및 중간 저장
-    CHECKPOINT_INTERVAL = 50 # 50개 단위로 저장
+    CHECKPOINT_INTERVAL = 50
     with ThreadPoolExecutor(max_workers=20) as executor:
         future_to_pair = {
             executor.submit(
@@ -151,13 +146,12 @@ def main():
             results.append(res)
             counter += 1
 
-            # 중간 저장 로직
             if counter % CHECKPOINT_INTERVAL == 0:
                 with open(output_path, "w") as f:
                     json.dump(results, f, indent=2, ensure_ascii=False)
                 print(f"💾 Checkpoint saved: {len(results)}/{len(all_possible_pairs)} completed.")
 
-    # 4. 최종 저장
+
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     print(f"✅ All Done! Final count: {len(results)}. Saved → {output_path}")
