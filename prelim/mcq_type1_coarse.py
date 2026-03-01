@@ -8,12 +8,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-# --- API 설정 ---
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# --- 설정 및 상수 ---
 MAX_WORKERS = 20
 MAX_RETRIES = 3
 VALID_EXT = [".jpg", ".jpeg", ".png"]
@@ -46,7 +44,6 @@ Do not output anything other than the option number you select.
 OPTIONS = [
     "They are totally different people.",
     "They are quite different people.",
-    "It is unclear whether they are the same person or not.",
     "They look similar, but are not same people.",
     "They are same people, even they are might under slight different conditions (e.g., lighting, angle, style).",
 ]
@@ -54,7 +51,6 @@ OPTIONS = [
 TEXT_TO_SCORE = {
     "They are totally different people.": 0.0,
     "They are quite different people.": 0.25,
-    "It is unclear whether they are the same person or not.": None,
     "They look similar, but are not same people.": 0.75,
     "They are same people, even they are might under slight different conditions (e.g., lighting, angle, style).": 1.0,
 }
@@ -79,12 +75,10 @@ def build_shuffled_prompt():
     prompt = USER_PROMPT.format(options=options_text)
     return prompt, num_to_text
 
-# --- API 실행 함수 (ERROR 재시도용) ---
 def retry_error_entry(entry, orig_folder_path):
     id_a = entry["id_1"]
     id_b = entry["id_2"]
     
-    # 이미지 경로 찾기
     path_a = find_image_path(orig_folder_path, id_a)
     path_b = find_image_path(orig_folder_path, id_b)
     
@@ -126,16 +120,13 @@ def retry_error_entry(entry, orig_folder_path):
         return {"id_1": id_a, "id_2": id_b, "text": f"EXCEPTION: {str(e)}", "score": -1}
 
 def find_image_path(folder, image_id):
-    """id로부터 실제 이미지 파일 경로를 찾는다."""
     for ext in VALID_EXT:
         candidate = os.path.join(folder, image_id + ext)
         if os.path.exists(candidate):
             return candidate
     return None
 
-# --- 메인 실행부 ---
 def main(orig_folder_path, result_json_path):
-    # 1. 기존 결과 로드
     if not os.path.exists(result_json_path):
         print(f"❌ Result file not found: {result_json_path}")
         return
@@ -143,7 +134,6 @@ def main(orig_folder_path, result_json_path):
     with open(result_json_path, "r", encoding='utf-8') as f:
         results = json.load(f)
     
-    # 2. ERROR 항목만 필터링
     error_indices = [i for i, entry in enumerate(results) if entry.get("text") == "ERROR"]
     
     if not error_indices:
@@ -152,7 +142,6 @@ def main(orig_folder_path, result_json_path):
     
     print(f"🔄 Found {len(error_indices)} ERROR entries. Retrying with {MAX_WORKERS} workers...")
 
-    # 3. ThreadPoolExecutor로 ERROR 항목만 재시도
     error_entries = [results[i] for i in error_indices]
     
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -165,7 +154,7 @@ def main(orig_folder_path, result_json_path):
         for future in as_completed(future_to_idx):
             idx = future_to_idx[future]
             res = future.result()
-            results[idx] = res  # 원래 위치에 덮어쓰기
+            results[idx] = res  
             completed_count += 1
             
             if completed_count % 50 == 0 or completed_count == len(error_indices):
@@ -173,7 +162,6 @@ def main(orig_folder_path, result_json_path):
                 with open(result_json_path, "w", encoding='utf-8') as f:
                     json.dump(results, f, indent=2, ensure_ascii=False)
 
-    # 4. 최종 저장
     with open(result_json_path, "w", encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     
