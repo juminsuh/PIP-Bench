@@ -4,7 +4,7 @@ from openai import OpenAI
 import json
 from dotenv import load_dotenv
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor, as_completed # 멀티스레딩 추가
+from concurrent.futures import ThreadPoolExecutor, as_completed 
 
 # --- API ---
 env_path = Path(__file__).resolve().parent.parent.parent / '.env'
