@@ -1,0 +1,75 @@
+import pandas as pd
+import json
+import os
+
+# 설정
+metadata_path = '/data1/joo/pai_bench/data/prelim_01/metadata.jsonl'
+output_dir = '/data1/joo/pai_bench/results/prelim_01/analysis/factor_pairs/same'
+os.makedirs(output_dir, exist_ok=True)
+
+# 비교할 속성 리스트
+factors = ["gender", "ethnicity", "age_group", "hair_color", "facial_expression", "angle", "mustache", "occlusion"]
+
+# Person ID 계산 함수
+def get_person_id(img_id):
+    return (int(img_id) - 1) // 15
+
+# 1. Metadata 로드
+metadata_list = []
+with open(metadata_path, 'r', encoding='utf-8') as f:
+    for line in f:
+        item = json.loads(line)
+        metadata_list.append(item)
+
+print(f"Total images: {len(metadata_list)}")
+
+# 2. 각 factor별로 처리
+for target_factor in factors:
+    print(f"\n=== Processing factor: {target_factor} ===")
+    
+    result_pairs = []
+    
+    # 모든 이미지 pair 조합 생성
+    for i, img1 in enumerate(metadata_list):
+        for j, img2 in enumerate(metadata_list):
+            if i >= j:  # 중복 제거 (자기 자신과의 비교 및 순서만 다른 pair 제거)
+                continue
+            
+            # 같은 person_id인지 확인 (추가!)
+            person_id1 = get_person_id(img1['img_id'])
+            person_id2 = get_person_id(img2['img_id'])
+            
+            if person_id1 != person_id2:  # 다른 person이면 건너뛰기
+                continue
+            
+            # target_factor는 다른지 확인
+            if img1[target_factor] == img2[target_factor]:
+                continue
+            
+            # 나머지 factor들이 모두 같은지 확인
+            other_factors = [f for f in factors if f != target_factor]
+            all_same = all(img1[f] == img2[f] for f in other_factors)
+            
+            if all_same:
+                result_pairs.append({
+                    'person_id': person_id1,
+                    'image0': img1['img_id'],
+                    'image1': img2['img_id'],
+                    'diff_factor': target_factor,
+                    'img0_value': img1[target_factor],
+                    'img1_value': img2[target_factor],
+                    **{f'{f}': img1[f] for f in other_factors}  # 같은 값들
+                })
+    
+    # 3. 결과 저장
+    if result_pairs:
+        df_result = pd.DataFrame(result_pairs)
+        save_path = os.path.join(output_dir, f'diff_{target_factor}_pairs_same.csv')
+        df_result.to_csv(save_path, index=False)
+        print(f"  Found {len(result_pairs)} pairs")
+        print(f"  Saved to: {save_path}")
+        print(f"  Sample:\n{df_result[['person_id', 'image0', 'image1', 'diff_factor', 'img0_value', 'img1_value']].head(3)}")
+    else:
+        print(f"  No pairs found for {target_factor}")
+
+print("\n✅ All factors processed!")
