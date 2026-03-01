@@ -73,7 +73,6 @@ def parse_response(text, num_to_text, num_factors):
             print("  [WARNING] 'Yes' option selected together with 'No' options!")
             return None, None
 
-    # No 옵션 개수를 세서 score 계산
     num_mistakes = len(chosen_texts)
     score = max(0.0, 1.0 - (1.0 / num_factors) * num_mistakes)
     score = round(score, 4)
@@ -162,16 +161,6 @@ def main(gen_folder_path, parsed_data_path, output_dir):
 
 
     results = {}
-    # for fname in sorted(os.listdir(gen_folder_path)):
-    #     ext = os.path.splitext(fname)[1].lower()
-
-    #     # 이미지 확장자가 아니면 건너뜀
-    #     if ext not in VALID_EXT:
-    #         continue
-
-    #     # 파일명에서 확장자를 제외한 부분(ID) 추출
-    #     idx = os.path.splitext(fname)[0]   # 예: "001"
-    #     gen_path = os.path.join(gen_folder_path, fname)
     for folder_name in sorted(os.listdir(gen_folder)):
         subfolder = os.path.join(gen_folder, folder_name)
         if not os.path.isdir(subfolder):
@@ -211,7 +200,6 @@ def main(gen_folder_path, parsed_data_path, output_dir):
             chosen_score = None
 
             for attempt in range(1, MAX_RETRIES + 1):
-                # 매 시도마다 옵션 순서를 새로 셔플
                 options_text, num_to_text = build_shuffled_options(class_word, factors)
                 result = run_type2_mcq(gen_path, factors, description, options_text)
 
