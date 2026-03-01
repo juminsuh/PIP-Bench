@@ -7,13 +7,13 @@ from dotenv import load_dotenv
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# --- API 설정 ---
+
 env_path = Path(__file__).resolve().parent.parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=API_KEY)
 
-# --- 프롬프트 설정 ---
+
 SYSTEM_PROMPT = """
 You are a powerful visual expert capable of accurately analyzing faces in images and determining whether two people are the same person, based on perceptual and coarse-grained impression.
 """
