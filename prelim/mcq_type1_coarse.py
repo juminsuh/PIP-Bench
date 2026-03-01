@@ -165,7 +165,6 @@ def main(orig_folder_path, result_json_path):
     with open(result_json_path, "w", encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     
-    # 5. 결과 요약
     remaining_errors = sum(1 for entry in results if entry.get("text") == "ERROR" or entry.get("text", "").startswith("EXCEPTION"))
     print(f"✨ Retry finished! {len(error_indices) - remaining_errors}/{len(error_indices)} errors resolved.")
     if remaining_errors > 0:
