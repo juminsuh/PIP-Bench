@@ -8,12 +8,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 from openai import OpenAI
 
-# --- API 설정 ---
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# --- 설정 및 상수 ---
 MAX_WORKERS = 20
 MAX_RETRIES = 3
 VALID_EXT = [".jpg", ".jpeg", ".png"]
@@ -95,7 +93,6 @@ def find_image_path(folder, image_id):
             return candidate
     return None
 
-# --- ERROR 항목 재시도 함수 ---
 def retry_error_entry(entry, orig_folder_path):
     id_a = entry["id_1"]
     id_b = entry["id_2"]
@@ -140,7 +137,6 @@ def retry_error_entry(entry, orig_folder_path):
 
 # --- Main ---
 def main(orig_folder_path, result_json_path):
-    # 1. 기존 결과 로드
     if not os.path.exists(result_json_path):
         print(f"❌ Result file not found: {result_json_path}")
         return
@@ -148,7 +144,6 @@ def main(orig_folder_path, result_json_path):
     with open(result_json_path, "r", encoding='utf-8') as f:
         results = json.load(f)
     
-    # 2. ERROR 항목만 필터링
     error_indices = [i for i, entry in enumerate(results) if entry.get("text") == "ERROR"]
     
     if not error_indices:
@@ -157,7 +152,6 @@ def main(orig_folder_path, result_json_path):
     
     print(f"🔄 Found {len(error_indices)} ERROR entries. Retrying with {MAX_WORKERS} workers...")
 
-    # 3. ThreadPoolExecutor로 ERROR 항목만 재시도
     error_entries = [results[i] for i in error_indices]
     
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
@@ -178,11 +172,9 @@ def main(orig_folder_path, result_json_path):
                 with open(result_json_path, "w", encoding='utf-8') as f:
                     json.dump(results, f, indent=2, ensure_ascii=False)
 
-    # 4. 최종 저장
     with open(result_json_path, "w", encoding='utf-8') as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
     
-    # 5. 결과 요약
     remaining_errors = sum(1 for entry in results if entry.get("text") == "ERROR")
     print(f"✨ Retry finished! {len(error_indices) - remaining_errors}/{len(error_indices)} errors resolved.")
     if remaining_errors > 0:
