@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# --- API 설정 ---
 env_path = Path(__file__).resolve().parent.parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 API_KEY = os.getenv("OPENAI_API_KEY")
@@ -58,12 +57,8 @@ def get_mime(path):
     ext = os.path.splitext(path)[1].lower()
     return "image/png" if ext == ".png" else "image/jpeg"
 
-# --- 수정된 매칭 로직: 파일명 '_' 앞의 ID 기준 ---
 def find_matching_gen(gen_folder, idx):
-    """
-    gen_folder 내에서 파일명(예: 001_suffix.jpg)의 앞부분이 
-    idx(예: 001)와 일치하는 파일을 찾아 반환합니다.
-    """
+   
     if not os.path.isdir(gen_folder):
         return None
         
@@ -101,7 +96,7 @@ def run_type1_mcq(ref_img_path, gen_img_path):
     return response.output_text
 
 
-# --- Thread 작업 ---
+
 def process_single_id(idx, ref_path, gen_path):
     print(f"[{idx}] Evaluating... (Matching: {os.path.basename(gen_path)})")
     try:
