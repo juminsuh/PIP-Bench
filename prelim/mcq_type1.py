@@ -8,13 +8,12 @@ from pathlib import Path
 from itertools import combinations
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# --- API 설정 ---
+
 env_path = Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
 API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=API_KEY)
 
-# --- PROMPT (원문 유지) ---
 SYSTEM_PROMPT = """
 You are a powerful visual expert capable of accurately analyzing faces in images and determining whether two people are the same person, based on both coarse and fine-grained facial features.
 """
@@ -66,8 +65,8 @@ def run_type1_mcq(img_path1, img_path2):
         mime_2 = get_mime(img_path2)
 
         response = client.chat.completions.create(
-            model="gpt-4o", # 실제 사용 모델로 확인
-            messages=[
+            model="gpt-5", 
+            input=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {
                     "role": "user",
