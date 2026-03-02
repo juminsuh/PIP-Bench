@@ -33,7 +33,7 @@ To unify evaluation efforts, we present PIP-Bench (Personalized Image Perception
 
 ## 🔥 Evaluation
 
-You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench. 
+You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench. We rigorously selected images from [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html).
 You can evaluate the models' ID preservation and text alignment performace with running files in the mllm_evaluator folder. 
 
 > **Note:** Before running any evaluation code, update the image and text prompt input paths to your local paths.
