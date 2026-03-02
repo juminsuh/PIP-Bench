@@ -28,7 +28,7 @@ To unify evaluation efforts, we present PIP-Bench (Personalized Image Perception
 
 - Structured Multi-Factor Prompts: Includes a hierarchy of Single, Double, and Triple-factor prompts to evaluate how models handle increasing prompt complexity.
 
-= Standardized Protocol: A reproducible evaluation pipeline to ensure fair comparison across different generative models.
+- Standardized Protocol: A reproducible evaluation pipeline to ensure fair comparison across different generative models.
 
 
 ## 🔥 Evaluation
