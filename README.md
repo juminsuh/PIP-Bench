@@ -22,7 +22,7 @@ We introduce an MLLM-based Evaluator designed for transparent and diagnostic ass
 - Explainable Failure Analysis: Beyond simple scores, it utilizes Multiple Choice Questions (MCQ) to diagnose specific reasons for alignment or identity loss.
 
 ### 3. 📊 PIP-Bench: A New Standard Benchmark
-To unify evaluation efforts, we present PIP-Bench (Personalized Image Perception Benchmark):
+To unify evaluation efforts, we present PIP-Bench (Preservation of Identity and Prompt Benchmark):
 
 - Curated Identities: A high-quality set of diverse identities for rigorous testing.
 
