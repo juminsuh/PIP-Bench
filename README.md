@@ -1,4 +1,4 @@
-# PIP-Bench
+# ⚙️ PIP-Bench
 
 ## 🚀 Research Overview: Standardizing Evaluation for Personalized Image Generation
 
