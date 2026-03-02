@@ -73,9 +73,6 @@ def build_shuffled_prompt():
     return USER_PROMPT.format(options=options_text), num_to_text
 
 def get_gen_map(gen_folder):
-    """
-    gen_folder 내의 파일들(예: 001_xx.jpg)을 스캔하여 { '001': '전체경로' } 맵 생성
-    """
     gen_map = {}
     valid_ext = [".jpg", ".jpeg", ".png"]
     if not os.path.exists(gen_folder):
@@ -83,7 +80,7 @@ def get_gen_map(gen_folder):
     
     for fname in os.listdir(gen_folder):
         if os.path.splitext(fname)[1].lower() in valid_ext:
-            prefix = fname.split('_')[0]  # '_' 기준 앞부분 추출
+            prefix = fname.split('_')[0] 
             if prefix not in gen_map:
                 gen_map[prefix] = os.path.join(gen_folder, fname)
     return gen_map
@@ -126,11 +123,10 @@ def process_single_item(idx, ref_path, gen_path):
         
     return idx, {"text": "ERROR", "score": -1}
 
-# --- 메인 실행 함수 ---
 def main_with_threading(model, num_workers=15):
-    ref_folder = "/data1/joo/pai_bench/data/generation/cropped/orig"
-    gen_folder = f"/data1/joo/pai_bench/data/generation/cropped/{model}"
-    output_dir = f"/data1/joo/pai_bench/result/mcq/cropped/{model}"
+    ref_folder = "reference_folder_path"
+    gen_folder = f"generation_folder_path_{model}"
+    output_dir = f"output_dir_{model}"
     os.makedirs(output_dir, exist_ok=True)
 
     gen_map = get_gen_map(gen_folder)
@@ -142,7 +138,7 @@ def main_with_threading(model, num_workers=15):
         if os.path.splitext(fname)[1].lower() not in valid_ext:
             continue
         
-        idx = os.path.splitext(fname)[0] # '001'
+        idx = os.path.splitext(fname)[0] 
         ref_path = os.path.join(ref_folder, fname)
         gen_path = gen_map.get(idx)
 
