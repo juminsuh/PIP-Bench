@@ -164,8 +164,8 @@ if __name__ == "__main__":
     
     for model in model_list:
         print(f"\n🚀 Current Model: {model}")
-        gen_folder = f"/data1/joo/pai_bench/data/generation/{model}"
-        prompt_file = "/data1/joo/pai_bench/data/prompts/prompts.json"
-        out_dir = f"/data1/joo/pai_bench/result/mcq/{model}"
+        gen_folder = f"generation_folder_path_{model}"
+        prompt_file = "prompt_path"
+        out_dir = f"output_dir_{model}"
         
         main(gen_folder, prompt_file, out_dir, max_workers=15)
