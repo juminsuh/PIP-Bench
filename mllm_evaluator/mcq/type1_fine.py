@@ -144,9 +144,9 @@ def process_single_item(idx, ref_path, gen_path):
 
 
 def main_with_threading(model, num_workers=15):
-    ref_folder = "/data1/joo/pai_bench/data/generation/cropped/orig"
-    gen_folder = f"/data1/joo/pai_bench/data/generation/cropped/{model}"
-    output_dir = f"/data1/joo/pai_bench/result/mcq/cropped/{model}"
+    ref_folder = "reference_folder_path"
+    gen_folder = f"generation_folder_{model}"
+    output_dir = f"output_dir_{model}"
     os.makedirs(output_dir, exist_ok=True)
 
     gen_map = get_gen_map(gen_folder)
