@@ -30,4 +30,20 @@ To unify evaluation efforts, we present PIP-Bench (Personalized Image Perception
 
 = Standardized Protocol: A reproducible evaluation pipeline to ensure fair comparison across different generative models.
 
+
+## 🔥 Evaluation
+
 You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench. 
+You can evaluate the models' ID preservation and text alignment performace with running files in the mllm_evaluator folder. 
+
+> **Note:** Before running any evaluation code, update the image and text prompt input paths to your local paths.
+
+### ID Preservation
+After you generate images with our PIP-Bench, you should crop both reference and generated faces using [this code](./preprocess/yolov8.py) before running MLLM evaluation. 
+- **Scoring:** `python mllm_evaluator/score/type1.py`
+- **Coarse-grained MCQ:** `python mllm_evaluator/mcq/type1_coarse.py`
+- **Fine-grained MCQ:** `python mllm_evaluator/mcq/type1_fine.py`
+
+### Text Alignment
+- **Scoring:** `python mllm_evaluator/score/type2.py`
+- **MCQ:** `python mllm_evaluator/mcq/type2.py`
