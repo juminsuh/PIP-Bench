@@ -246,9 +246,9 @@ if __name__ == "__main__":
     model_list = ["consistentID", "fastcomposer", "flashface", "gemini", "instantID", "ip_adapter_15_SD"]
     for model in model_list:
         print(f"model: {model}")
-        gen_folder_path = f"/data1/joo/pai_bench/data/generation/{model}"
-        prompt_path = "/data1/joo/pai_bench/data/prompts/prompts.json"
-        output_dir = f"/data1/joo/pai_bench/result/mcq/{model}"
+        gen_folder_path = f"generation_folder_path_{model}"
+        prompt_path = "prompt_path"
+        output_dir = f"output_dir_{model}"
         os.makedirs(output_dir, exist_ok=True)
         
         main(gen_folder_path, prompt_path, output_dir)
