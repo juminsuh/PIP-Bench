@@ -171,8 +171,8 @@ def main(ref_folder_path, gen_folder_path, output_dir, max_workers=15):
 if __name__ == "__main__":
     for model in ["consistentID", "fastcomposer", "flashface", "gemini", "instantID"]:
 
-        ref_folder = "/data1/joo/pai_bench/data/generation/cropped/ablation/ref"
-        gen_folder = f"/data1/joo/pai_bench/data/generation/cropped/ablation/{model}"
-        output_dir = f"/data1/joo/pai_bench/result/mcq/cropped/{model}"
+        ref_folder = "reference_folder_path"
+        gen_folder = f"generation_folder_{model}"
+        output_dir = f"output_dir_{model}"
         
         main(ref_folder, gen_folder, output_dir, max_workers=15)
