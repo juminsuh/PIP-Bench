@@ -14,68 +14,12 @@ import os
 model_path = hf_hub_download(repo_id="arnabdhar/YOLOv8-Face-Detection", filename="model.pt")
 model = YOLO(model_path)
 
-folder_path = "/data1/joo/pai_bench/data/benchmark"
-cropped_dir = "/data1/joo/pai_bench/data/generation/cropped/ablation"
+folder_path = "images_path"
+cropped_dir = "save_path"
 os.makedirs(cropped_dir, exist_ok=True)
 
 image_extensions = ('.jpg', '.jpeg', '.png', '.bmp', '.tiff', '.webp')
 
-
-# # --- Crop Faces! ---
-# for filename in os.listdir(folder_path):
-#     if filename.lower().endswith(image_extensions):
-#         image_path = os.path.join(folder_path, filename)
-#         print(f"Processing: {filename}")
-        
-#         try:
-#             image = Image.open(image_path)
-#             output = model(image)
-#             results = Detections.from_ultralytics(output[0])
-            
-#             print(f"Found {len(results.xyxy)} faces in {filename}")
-
-#             # save as {base_name}.jpg if only one face detected
-#             if len(results.xyxy) == 1:
-#                 bbox = results.xyxy[0]
-#                 x1, y1, x2, y2 = bbox.astype(int)
-#                 cropped_image = image.crop((x1, y1, x2, y2))
-                
-#                 # convert RGBA to RGB if necessary
-#                 if cropped_image.mode == 'RGBA':
-#                     cropped_image = cropped_image.convert('RGB')
-                
-#                 # save cropped image
-#                 base_name = os.path.splitext(filename)[0]
-#                 crop_filename = f"{base_name}.jpg"
-#                 crop_path = os.path.join(cropped_dir, crop_filename)
-#                 cropped_image.save(crop_path)
-                
-#                 print(f"Saved cropped face to: {crop_path}")
-
-#             # save as {base_name}_{i}.jpg if multiple faces are detected
-#             else:
-#                 for i,bbox in enumerate(results.xyxy):
-#                     bbox = x1, y1, x2, y2 = bbox.astype(int)
-#                     cropped_image = image.crop((x1, y1, x2, y2))
-                    
-#                     # convert RGBA to RGB if necessary
-#                     if cropped_image.mode == 'RGBA':
-#                         cropped_image = cropped_image.convert('RGB')
-                    
-#                     # save cropped image
-#                     base_name = os.path.splitext(filename)[0]
-#                     crop_filename = f"{base_name}_{i}.jpg"
-#                     crop_path = os.path.join(cropped_dir, crop_filename)
-#                     cropped_image.save(crop_path)
-                    
-#                     print(f"Saved cropped face to: {crop_path}")
-
-            
-#             print("FACE CROP COMPLETED!")
-                    
-#         except Exception as e:
-#             print(f"Error processing {filename}: {e}")
-#             continue
 
 # --- Crop Faces! ---
 for sub_folder in sorted(os.listdir(folder_path)):
