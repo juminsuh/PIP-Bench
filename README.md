@@ -6,7 +6,7 @@ While personalized image generation has seen rapid advancement, the field still 
 
 ## ✨ Key Contributions
 ### 1. 🔍 Systematic Analysis of Existing Metrics
-We conduct a deep dive into widely used ID and text-alignment metrics, identifying critical failure modes in personalized human image generation:
+We conduct a deep dive into widely used ID and text-alignment metrics, identifying critical failure modes in personalized human image generation. We selected 13 identities from [VGGFACE2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/):
 
 - Factor Sensitivity: Vulnerability to changes in pose, lighting, or background.
 
@@ -34,7 +34,7 @@ To unify evaluation efforts, we present PIP-Bench (Personalized Image Perception
 ## 🔥 Evaluation
 
 You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench. We rigorously selected images from [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html).
-You can evaluate the models' ID preservation and text alignment performace with running files in the mllm_evaluator folder. 
+You can evaluate the models' ID preservation and text alignment performace with running files in the `mllm_evaluator` folder. 
 
 > **Note:** Before running any evaluation code, update the image and text prompt input paths to your local paths.
 
