@@ -30,4 +30,4 @@ To unify evaluation efforts, we present PIP-Bench (Personalized Image Perception
 
 = Standardized Protocol: A reproducible evaluation pipeline to ensure fair comparison across different generative models.
 
-You can access the images and prompts for PIP-Bench here and here.
+You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench. 
