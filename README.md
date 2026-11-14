@@ -13,11 +13,12 @@ We conduct a deep dive into widely used ID and text-alignment metrics, identifyi
 - Lack of Explainability: Quantitative scores that fail to provide "why" a model failed.
 
 ### 2. PIP-Bench (Preservation of Identity and Prompt Benchmark)
- We rigorously selected images from [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), balancing gender, ethnicity, and age.
+ We rigorously selected images from [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), considering gender, ethnicity, and age.
  
 - Curated Identities: A high-quality set of diverse identities for rigorous testing.
 - Structured Multi-Factor Prompts: Includes a hierarchy of Single, Double, and Triple-factor prompts to evaluate how models handle increasing prompt complexity.
-  <img src="./assets/stat.png">
+
+ <p align="center"><img src="./assets/stat.png" width="500" height="500"></p>
 
 ### 3. Rubric-Guided MLLM Evaluator
 We introduce an MLLM-based Evaluator designed for transparent and diagnostic assessment:
@@ -30,11 +31,11 @@ We evaluated six representative models (i.e., IP-Adapter, FastComposer, FlashFac
 
 - For most diffusion-based models, as prompt difficulty increases, ID preservation is relatively stable while text alignment drops. It indicates that satisfying multiple constraints simultaneously becomes hard under higher compositionality. For example, ConsistentID achieves the strongest identity preservation under varying prompt difficulty while yielding the lowest prompt alignment performance. 
 - Gemini 2.5-Flash attains the highest prompt alignment, but its identity score drops as prompt difficulty increases.
-  <img src="./assets/table.png" width="800" height="600">
+  <p align="center"><img src="./assets/table.png" width="800" height="600"></p>
   
 - Beyond scalar scores, MCQ outputs enable interpretable diagnosis of what failed: coarse/fine identity checks separate global resemblance from subtle feature drift and factor-wise text checkes pinpoint which prompt elements are missing or incorrect. 
 
-   <img src="./assets/fig.png" width="400" height="600">
+ <p align="center"><img src="./assets/fig.png" width="400" height="600"></p>
 
 
 ## 🔥 Evaluation
