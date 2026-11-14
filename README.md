@@ -1,34 +1,34 @@
-# ⚙️ PIP-Bench
+# ⚙️ PIP-Bench: Benchmarking Identity Preservation and Prompt Alignment with Explainable MLLM Evaluation
 
-## 🚀 Research Overview: Standardizing Evaluation for Personalized Image Generation
+## 🚀 Overview
 
 While personalized image generation has seen rapid advancement, the field still lacks a standardized and reliable evaluation framework for its two core axes: **Identity (ID) Preservation** and **Text Alignment.** Current metrics often fail to capture the nuances of human-centric generation. To bridge this gap, our research identifies the limitations of existing benchmarks and proposes a more robust, explainable evaluation protocol.
 
 ## ✨ Key Contributions
-### 1. 🔍 Systematic Analysis of Existing Metrics
+### 1. Systematic Analysis of Existing Metrics
 We conduct a deep dive into widely used ID and text-alignment metrics, identifying critical failure modes in personalized human image generation. We selected 13 identities from [VGGFACE2](https://www.robots.ox.ac.uk/~vgg/data/vgg_face2/):
 
 - Factor Sensitivity: Vulnerability to changes in pose, lighting, or background.
-
 - Semantic/Demographic Grouping: Group identities based on semantic/demographic biases rather than discriminate identities based on facial features. 
-
 - Lack of Explainability: Quantitative scores that fail to provide "why" a model failed.
 
-### 2. 🧠 Rubric-Guided MLLM Evaluator
-We introduce an MLLM-based Evaluator designed for transparent and diagnostic assessment:
-
-- Normalized Scoring: Outputs standardized ID and text-alignment scores guided by a structured rubric to ensure consistency.
-
-- Explainable Failure Analysis: Beyond simple scores, it utilizes Multiple Choice Questions (MCQ) to diagnose specific reasons for alignment or identity loss.
-
-### 3. 📊 PIP-Bench: A New Standard Benchmark
-To unify evaluation efforts, we present PIP-Bench (Preservation of Identity and Prompt Benchmark):
+### 2. PIP-Bench (Preservation of Identity and Prompt Benchmark)
 
 - Curated Identities: A high-quality set of diverse identities for rigorous testing.
-
 - Structured Multi-Factor Prompts: Includes a hierarchy of Single, Double, and Triple-factor prompts to evaluate how models handle increasing prompt complexity.
 
-- Standardized Protocol: A reproducible evaluation pipeline to ensure fair comparison across different generative models.
+### 3. Rubric-Guided MLLM Evaluator
+We introduce an MLLM-based Evaluator designed for transparent and diagnostic assessment:
+
+- Normalized Scoring: Outputs standardized ID and text-alignment scores guided by a structured rubric.
+- Explainable Failure Analysis: Beyond simple scores, it utilizes Multiple Choice Questions (MCQ) to diagnose specific reasons for alignment or identity loss.
+
+### 4. Results
+We evaluated six representative models (i.e., IP-Adapter, FastComposer, FlashFace, InstantID, ConsistentID, Gemini 2.5-Flash) with PIP-Bench.
+
+- For most diffusion-based models, as prompt difficulty increases, ID preservation is relatively stable while text alignment drops. It indicates that satisfying multiple constraints simultaneously becomes hard under higher compostionality.
+- ConsistentID achieves the strongest identity preservation under varying prompt difficulty while yielding the lowest prompt alignment performance. 
+- Gemini 2.5-Flash attains the highest prompt alignment, but its identity score drops as prompt difficulty increases.
 
 
 ## 🔥 Evaluation
