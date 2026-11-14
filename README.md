@@ -13,9 +13,11 @@ We conduct a deep dive into widely used ID and text-alignment metrics, identifyi
 - Lack of Explainability: Quantitative scores that fail to provide "why" a model failed.
 
 ### 2. PIP-Bench (Preservation of Identity and Prompt Benchmark)
-
+ We rigorously selected images from [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html), balancing gender, ethnicity, and age.
+ 
 - Curated Identities: A high-quality set of diverse identities for rigorous testing.
 - Structured Multi-Factor Prompts: Includes a hierarchy of Single, Double, and Triple-factor prompts to evaluate how models handle increasing prompt complexity.
+  <img src="./assets/stat.png">
 
 ### 3. Rubric-Guided MLLM Evaluator
 We introduce an MLLM-based Evaluator designed for transparent and diagnostic assessment:
@@ -37,7 +39,7 @@ We evaluated six representative models (i.e., IP-Adapter, FastComposer, FlashFac
 
 ## 🔥 Evaluation
 
-You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench. We rigorously selected images from [CelebA](https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html).
+You can access the [images](./PIP-Bench) and [prompts](./prompts.json) for PIP-Bench.
 You can evaluate the models' ID preservation and text alignment performace with running files in the `mllm_evaluator` folder. 
 
 > **Note:** Before running any evaluation code, update the image and text prompt input paths to your local paths.
