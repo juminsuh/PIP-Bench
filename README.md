@@ -26,9 +26,13 @@ We introduce an MLLM-based Evaluator designed for transparent and diagnostic ass
 ### 4. Results
 We evaluated six representative models (i.e., IP-Adapter, FastComposer, FlashFace, InstantID, ConsistentID, Gemini 2.5-Flash) with PIP-Bench.
 
-- For most diffusion-based models, as prompt difficulty increases, ID preservation is relatively stable while text alignment drops. It indicates that satisfying multiple constraints simultaneously becomes hard under higher compostionality.
-- ConsistentID achieves the strongest identity preservation under varying prompt difficulty while yielding the lowest prompt alignment performance. 
+- For most diffusion-based models, as prompt difficulty increases, ID preservation is relatively stable while text alignment drops. It indicates that satisfying multiple constraints simultaneously becomes hard under higher compositionality. For example, ConsistentID achieves the strongest identity preservation under varying prompt difficulty while yielding the lowest prompt alignment performance. 
 - Gemini 2.5-Flash attains the highest prompt alignment, but its identity score drops as prompt difficulty increases.
+  <img src="./assets/table.png" width="800" height="600">
+  
+- Beyond scalar scores, MCQ outputs enable interpretable diagnosis of what failed: coarse/fine identity checks separate global resemblance from subtle feature drift and factor-wise text checkes pinpoint which prompt elements are missing or incorrect. 
+
+   <img src="./assets/fig.png" width="400" height="600">
 
 
 ## 🔥 Evaluation
