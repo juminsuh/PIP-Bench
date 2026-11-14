@@ -1,5 +1,7 @@
 # ⚙️ PIP-Bench: Benchmarking Identity Preservation and Prompt Alignment with Explainable MLLM Evaluation
 
+**[paper](./assets/paper.pdf)**
+
 ## 🚀 Overview
 
 While personalized image generation has seen rapid advancement, the field still lacks a standardized and reliable evaluation framework for its two core axes: **Identity (ID) Preservation** and **Text Alignment.** Current metrics often fail to capture the nuances of human-centric generation. To bridge this gap, our research identifies the limitations of existing benchmarks and proposes a more robust, explainable evaluation protocol.
